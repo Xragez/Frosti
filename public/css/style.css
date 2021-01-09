@@ -29,17 +29,17 @@ body {
     align-items: center;
     width: 23em;
     height: 40em;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 6px 6px #00000029;
+    background: #FFFFFF 0 0 no-repeat padding-box;
+    box-shadow: 0 6px 6px #00000029;
     border: 4px solid #2699FB;
     border-radius: 2em;
 }
-form{
+form.login{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 70%;
     height: 40vh;
     
 }
@@ -56,14 +56,17 @@ button {
 input{
     background-color: #DCDCDC;
     border: none;
-    width: 70%;
+    width: 80%;
     height: 3em;
     border-radius: 0.7em;
     margin: 1em;
 }
+input:focus{
+    outline: none;
+}
 .text{
     flex-direction: row;
-    width: 70%;
+    width: 100%;
     
 }
 .logo{
@@ -84,19 +87,78 @@ img{
     margin: 1em;
     font-style: oblique;
 }
+.search-bar{
+    width: 100%;
+}
+.side_menu{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    width: 18em;
+    height: 100%;
+    left: 0;
+    background: linear-gradient(to bottom right,rgba(3, 154, 229, 0.85),rgba(179, 229, 252, 0.85));
+}
+nav ul{
+    background: #2699FB;
+    width: 100%;
+    list-style: none;
+}
+nav ul li{
+    line-height: 3.75em;
+    border-bottom: 1px solid rgba(179, 229, 252, 0.85);
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding-left: 2.5em;
+    display: block;
+    font-weight: 500;
+    width: 13.7em;
+    border-left: 0.1875em solid transparent;
+}
+nav ul li a:hover{
+    color: #2699fb;
+    background-color: rgba(179, 229, 252, 0.9);
+    border-left-color: white;
+}
+.base-container{
+    display: flex;
 
+    height: 100vh;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    margin-left: 18em;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    border-bottom: 0.15em solid gray;
+}
+nav > img{
+    width: 80%;
+    margin: 3em auto;
+}
 @media only screen and (max-device-width: 420px){
     *{
         font-size: 36px;
     }
     .login-container, .logo{
         width: 90%;
-    }
-    .text{
-        width: 80%;
-    }
-    input{
-        width: 80%;
     }
     button{
         width: 50%;
