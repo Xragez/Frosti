@@ -16,12 +16,8 @@ class SecurityController extends AppController
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        if($user->getEmail() !== $email){
+        if($user->getEmail() !== $email || $user->getPassword() !== $password){
             return $this->render('login', ['messages' => ['Wrong email or password.']]);
-        }
-
-        if($user->getPassword() !== $password){
-            return $this->render('login', ['messages' => ['Wrong password.']]);
         }
 
         return $this->render('inventory');
