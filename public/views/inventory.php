@@ -31,11 +31,34 @@
                     </form>
                 </div>
                 <div class="account">
-                    
+
                 </div>
             </header>
             <section class="inventory">
-
+                <table class="inventory_table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Milk</td>
+                            <td>200 ml</td>
+                            <td>Drinks</td>
+                            <td>10.10.2020</td>
+                        </tr>
+                        <tr>
+                            <td>Milk</td>
+                            <td>200 ml</td>
+                            <td>Drinks</td>
+                            <td>10.10.2020</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </main>
     </div>

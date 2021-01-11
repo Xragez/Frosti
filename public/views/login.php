@@ -10,6 +10,7 @@
                 <div class="logo">
                     <img src="public/img/logo.svg">
                 </div>
+                <div clas="text">Log in to your account</div>
                 <form class="login" action="login" method="POST">
                     <div class="text">email</div>
                     <input class="login" name="email" type="text" placeholder="email@email.com">
@@ -25,6 +26,10 @@
                     </div>
                     <button type="submit">LOGIN</button>
                 </form>
+                <a class="login-footer">Not a member? &nbsp;
+                    <span>Sign Up</span>
+                    </a>
+
             </div>
             
     </div>
