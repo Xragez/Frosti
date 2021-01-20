@@ -1,25 +1,36 @@
 <?php
 
 require_once 'Repository.php';
-require_once __DIR__.'/../models/Inventory.php';
-class InventoryRepository extends Repository
+require_once __DIR__.'/../models/Item.php';
+class ItemRepository extends Repository
 {
-    public function getInventory(string $email): ?User{
+    public function getItem(int $id): ?Item{
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.users WHERE email = :email
+            SELECT * FROM items WHERE id_item = :id
         ');
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($user == false){
+        if($item == false){
             return null;
             //TODO add exception
         }
 
-        return new User($user['email'],$user['password'], $user['name'], $user['surname']);
+        return new Item($item['name'], $item['quantity'], $item['category'], $item['expitarion_date']);
 
 
+    }
+    public function addItem(Item $item): void{
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO items ()
+        ');
+    }
+    public function getItemCategoryId(Item $item){
+        //TODO
+    }
+    public function getItemNameId(Item $item){
+        //TODO
     }
 }

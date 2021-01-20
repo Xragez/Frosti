@@ -11,4 +11,14 @@ class DefaultController extends AppController{
     public function inventory(){
         $this->render('inventory');
     }
+
+
+    public function  accountDetails(){
+        $this->render('account_details');
+    }
+
+    public function recipes(){
+        $this->render('recipes');
+    }
+
 }
