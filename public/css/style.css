@@ -18,10 +18,21 @@ body {
     justify-content: center;
     align-items: center;
 
-    
-
 }
-
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+h3{
+    margin: 0;
+    color: #2699fb;
+}
+h1, h2{
+    margin: 0.5em;
+    color: #2699fb;
+}
 .login-container {
     display: flex;
     flex-direction: column;
@@ -31,8 +42,25 @@ body {
     height: 40em;
     background: #FFFFFF 0 0 no-repeat padding-box;
     box-shadow: 0 6px 6px #00000029;
-    border: 4px solid #2699FB;
     border-radius: 2em;
+}
+.register-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 23em;
+    height: 44em;
+    background: #FFFFFF 0 0 no-repeat padding-box;
+    box-shadow: 0 6px 6px #00000029;
+    border-radius: 2em;
+}
+form.register{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    margin-top: 1em;
 }
 form.login{
     display: flex;
@@ -43,19 +71,21 @@ form.login{
     height: 40vh;
     
 }
+
 button{
     width: 50%;
     height: 3em;
     border: none;
     color: white;
     margin: 1em;
-    background: #2699FB;
+    background: #2699fb;
     box-shadow: 0 3px 6px #00000029;
     border-radius: 0.35em;
 
 }
-button:active{
+button:hover, button:focus{
     outline: none;
+    background: #4ca7f5;
 }
 input{
     background-color: #DCDCDC;
@@ -74,7 +104,10 @@ input:focus{
     width: 100%;
     
 }
-span{
+.details{
+    margin: 1em;
+}
+.login-footer a{
     color: #2699FB;
     text-decoration: underline;
 }
@@ -84,7 +117,17 @@ span{
     justify-content: center;
     align-items: center;
 }
-
+.account{
+    height: 3em;
+    padding: 0 1em;
+    max-width: 10em;
+    background-color: #2699FB;
+    border-radius: 0.35em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 img{
     height: 7em;
     margin: 2em;
@@ -97,7 +140,8 @@ img{
     font-style: oblique;
 }
 .search-bar{
-    width: 80%;
+    width: 60%;
+
 }
 .side_menu{
     margin: 0;
@@ -114,12 +158,23 @@ nav{
     width: 18em;
     height: 100%;
     left: 0;
-    background: linear-gradient(to bottom right,rgba(3, 154, 229, 0.85),rgba(179, 229, 252, 0.85));
+    background: #2699FB;
 }
 nav ul{
     background: #2699FB;
     width: 100%;
     list-style: none;
+}
+nav ul ul{
+    display: none;
+
+}
+.show{
+    display: block;
+    background: #1a6bac;
+}
+.show-flex{
+    display: flex;
 }
 nav ul li{
     line-height: 3.75em;
@@ -132,8 +187,14 @@ nav ul li a{
     padding-left: 2.5em;
     display: block;
     font-weight: 500;
-    width: 13.7em;
-    border-left: 0.1875em solid transparent;
+    border-left: 0.3em solid transparent;
+}
+nav ul li a i{
+    font-size: 22px;
+    position: absolute;
+    right: 1em;
+    margin: 1em 0;
+    transition: transform 0.4s;
 }
 nav ul li a:hover{
     color: #2699fb;
@@ -144,6 +205,44 @@ nav ul li a:hover{
     display: flex;
 
     height: 100vh;
+}
+.modal{
+    position: fixed;
+    display: none;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40em;
+    height: 30em;
+    background: #FFFFFF 0 0 no-repeat padding-box;
+    box-shadow: 0 6px 6px #00000029;
+    border-radius: 2em;
+}
+.modal-content form{
+    width: 90%;
+    height: 90%;
+}
+.modal-content form input{
+    width: 20%;
+}
+.two-buttons{
+    display: flex;
+    align-items: flex-end;
+    width: 50%;
+    margin: 0 18em;
 }
 main{
     display: flex;
@@ -179,8 +278,12 @@ nav > img{
     *{
         font-size: 36px;
     }
-    .login-container, .logo{
+    .login-container, .register-container{
         width: 90%;
+        height: 72%
+    }
+    .register-container{
+        height: 85%;
     }
     button{
         width: 50%;
