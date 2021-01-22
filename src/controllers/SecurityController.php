@@ -27,8 +27,8 @@ class SecurityController extends AppController
         if(!$user || $user->getEmail() !== $email || $user->getPassword() !== md5($password)){
             return $this->render('login', ['messages' => ['Wrong email or password.']]);
         }
-        $_SESSION['loggedIn'] = true;
         $_SESSION['username'] = $user->getUsername();
+        $_SESSION['userId'] = $user->getUserId();
         return $this->render('inventory');
 
     }

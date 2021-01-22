@@ -28,9 +28,9 @@
                 <div class="text">Email address</div>
                 <input class="register" name="email" required="required" type="text" placeholder="Email address">
                 <div class="text">Password</div>
-                <input class="register" name="password" required="required" type="text" placeholder="Password">
+                <input class="register" name="password" required="required" type="password" placeholder="Password">
                 <div class="text">Confirm password</div>
-                <input class="register" name="confirmedPassword" required="required" type="text" placeholder="Password">
+                <input class="register" name="confirmedPassword" required="required" type="password" placeholder="Password">
                 <button type="submit">CREATE ACCOUNT</button>
             </form>
             <div class="login-footer"">Already have an account? &nbsp;

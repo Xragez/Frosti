@@ -13,19 +13,23 @@
                 <form>
                     <div class="text">Product name</div>
                     <div class="select-item-name">
-                        <select>Name</select>
+                        <input name="name" placeholder="name">
                     </div>
                     <div class="text">Category</div>
                     <div class="select-item-category">
-                        <select>Category</select>
+                        <select name="category">
+                            <?php foreach ($categories as $category): ?>
+                                <option><?= $category; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="text">Quantity</div>
-                    <input  name="quantity">
+                    <input  name="quantity" placeholder="quantity">
                     <div class="text">Expiration date</div>
-                    <input  name="quantity">
+                    <input type="date" name="expDate">
                     <div class="two-buttons">
                         <button type="submit">Add</button>
-                        <button>Cancel</button>
+                        <button type="reset" onclick="modal_cancel()">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -39,7 +43,7 @@
                     </a>
                     <ul class="side_menu manage-show" >
                         <li><a href="#">My food</a>
-                        <li><a href="#" onclick="modal_add_product()">Add Product</a>
+                        <li><a href="#" onclick="modal_add_product_menu()">Add Product</a>
                         <li><a href="#">Remove Product</a>
                     </ul>
                 </li>
@@ -64,13 +68,20 @@
                         <input placeholder="search">
                     </form>
                 </div>
-                <div class="account">
-                    <?php
-                    echo $_SESSION['username'];
-                    ?>
+                <div class="dropdown">
+                    <span class="account">
+                        <?php
+                        echo $_SESSION['username'];
+                        ?>
+                    </span>
+                    <div class="dropdown-content">
+                        <a href="#">Account Details</a>
+                        <a href="#">Log out</a>
+                    </div>
                 </div>
             </header>
             <section class="inventory">
+
                 <table class="inventory_table">
                     <thead>
                         <tr>
@@ -81,18 +92,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($items as $item): ?>
                         <tr>
-                            <td>Milk</td>
-                            <td>200 ml</td>
-                            <td>Drinks</td>
-                            <td>10.10.2020</td>
+                            <td><?= $item->getName(); ?></td>
+                            <td><?= $item->getQuantity(); ?></td>
+                            <td><?= $item->getCategory(); ?></td>
+                            <td><?= $item->getExpDate()->format('d-m-Y'); ?></td>
                         </tr>
-                        <tr>
-                            <td>Milk</td>
-                            <td>200 ml</td>
-                            <td>Drinks</td>
-                            <td>10.10.2020</td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </section>

@@ -9,6 +9,7 @@ class User
     private $surname;
     private $username;
     private $id_role;
+    private $user_id;
 
     public function __construct(string $email, string $password, string $name, string $surname)
     {
@@ -74,4 +75,11 @@ class User
         $this->username = $username;
     }
 
+    public function setUserId(int $id){
+        $this->user_id = $id;
+    }
+
+    public function getUserId(){
+        return $this->user_id;
+    }
 }

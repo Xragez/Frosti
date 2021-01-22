@@ -46,12 +46,12 @@ class Item
         $this->category = $category;
     }
 
-    public function getExpDate(): int
+    public function getExpDate(): DateTime
     {
         return $this->expDate;
     }
 
-    public function setExpDate(int $expDate)
+    public function setExpDate(DateTime $expDate)
     {
         $this->expDate = $expDate;
     }

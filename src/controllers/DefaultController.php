@@ -8,10 +8,6 @@ class DefaultController extends AppController{
         $this->render('login');
     }
 
-    public function inventory(){
-        $this->render('inventory');
-    }
-
 
     public function  accountDetails(){
         $this->render('account_details');
