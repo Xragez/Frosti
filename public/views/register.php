@@ -5,6 +5,7 @@
 </head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>Register</title>
+    <script type="text/javascript" src="./public/js/register_validation.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -18,7 +19,7 @@
         </div>
         <div class="register-container">
             <h2>Sign up for free</h2>
-            <form class="register" action="register" required="required" method="POST">
+            <form class="register" action="register" method="POST">
                 <div class="text">First Name</div>
                 <input class="register" name="name" required="required" type="text" placeholder="First name">
                 <div class="text">Last Name</div>

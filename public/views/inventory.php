@@ -1,8 +1,11 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 </head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <script src="https://kit.fontawesome.com/8d0c9bc700.js" crossorigin="anonymous"></script>
-    <script src="public/js/script.js"></script>
+    <script type="text/javascript" src="./public/js/script.js" defer></script>
     <title>My food</title>
 </head>
 <body>
@@ -10,23 +13,23 @@
         <div class="modal select-item">
             <div class="modal-content">
                 <h2 class="text">Add product</h2>
-                <form>
+                <form class="add-item" action="addItem" method="POST">
                     <div class="text">Product name</div>
                     <div class="select-item-name">
                         <input name="name" placeholder="name">
                     </div>
                     <div class="text">Category</div>
                     <div class="select-item-category">
-                        <select name="category">
+                        <select required="required" name="category">
                             <?php foreach ($categories as $category): ?>
                                 <option><?= $category; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="text">Quantity</div>
-                    <input  name="quantity" placeholder="quantity">
+                    <input required="required" name="quantity" placeholder="quantity">
                     <div class="text">Expiration date</div>
-                    <input type="date" name="expDate">
+                    <input required="required" type="date" name="expDate">
                     <div class="two-buttons">
                         <button type="submit">Add</button>
                         <button type="reset" onclick="modal_cancel()">Cancel</button>
@@ -71,12 +74,12 @@
                 <div class="dropdown">
                     <span class="account">
                         <?php
-                        echo $_SESSION['username'];
+                        echo $user->getUsername();
                         ?>
                     </span>
                     <div class="dropdown-content">
-                        <a href="#">Account Details</a>
-                        <a href="#">Log out</a>
+                        <a href="accountDetails">Account Details</a>
+                        <div>Log out</div>
                     </div>
                 </div>
             </header>
@@ -97,7 +100,7 @@
                             <td><?= $item->getName(); ?></td>
                             <td><?= $item->getQuantity(); ?></td>
                             <td><?= $item->getCategory(); ?></td>
-                            <td><?= $item->getExpDate()->format('d-m-Y'); ?></td>
+                            <td><?= date("d.m.Y", strtotime($item->getExpDate())); ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

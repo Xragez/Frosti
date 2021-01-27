@@ -28,13 +28,15 @@ class UserRepository extends Repository
         $stmt = $this->database->connect()->prepare('
             INSERT INTO user_details (username, name, surname)
             VALUES(?, ?, ?)
+            RETURNING id_user_details
         ');
         $stmt->execute([
             $user->getUsername(),
             $user->getName(),
             $user->getSurname()
         ]);
-
+        $return = $stmt->fetch(PDO::FETCH_ASSOC);
+        $detailsId = $return['id_user_details'];
         $stmt = $this->database->connect()->prepare('
             INSERT INTO users (email, password, created_at, id_user_details)
             VALUES(?, ?, ?, ?)
@@ -44,7 +46,7 @@ class UserRepository extends Repository
                 $user->getEmail(),
                 $user->getPassword(),
                 $date->format('Y-m-d'),
-                $this->getUserDetailsId($user)
+                $detailsId
         ]);
     }
     public function getUserDetailsId(User $user): int{

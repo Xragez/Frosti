@@ -6,10 +6,9 @@ class ItemRepository extends Repository
 {
     public function getItem(int $id): ?Item{
         $stmt = $this->database->connect()->prepare('
-            SELECT quantity, expiration_date, id_item, public.item_names.name, public.item_categories.name
+            SELECT quantity, expiration_date, id_item, public.items.name, public.item_categories.name
             FROM items
-            LEFT JOIN item_names ON public.item_names.id_item_name = public.items.id_item_name
-            LEFT JOIN item_categories ON item_names.id_item_category = item_categories.id_item_category
+            LEFT JOIN item_categories ON items.id_category = item_categories.id_item_category
             WHERE id_item = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -21,7 +20,6 @@ class ItemRepository extends Repository
             return null;
             //TODO add exception
         }
-
         return new Item($item['name'], $item['quantity'], $item['category'], $item['expiration_date']);
 
 
@@ -29,13 +27,25 @@ class ItemRepository extends Repository
     public function addItem(Item $item): void{
         $stmt = $this->database->connect()->prepare('
             INSERT INTO items (name, quantity, id_category, expiration_date)
-            VALUES (?, ?, ?, ?)
+            VALUES (?, ?, ?, ?) 
+            RETURNING id_item
         ');
         $stmt->execute([
             $item->getName(),
             $item->getQuantity(),
             $this->getCategoryId($item),
-            $item->getExpDate()
+            date("Y-m-d", strtotime($item->getExpDate()))
+        ]);
+        $itemReturn = $stmt->fetch(PDO::FETCH_ASSOC);
+        $itemId = $itemReturn['id_item'];
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users_items (id_user, id_item)
+            VALUES (?, ?)
+        ');
+        $userId = $_SESSION['userId'];
+        $stmt->execute([
+            $userId,
+            $itemId
         ]);
     }
 
@@ -54,7 +64,7 @@ class ItemRepository extends Repository
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($items as $item){
-            $date = new DateTime($item['expdate']);
+            $date = $item['expdate'];
             $result[] = new Item(
                 $item['name'],
                 $item['quantity'],
@@ -79,11 +89,13 @@ class ItemRepository extends Repository
     public function getCategoryId(Item $item): int{
         $stmt = $this->database->connect()->prepare('
             SELECT item_categories.id_item_category FROM item_categories
-                WHERE item_categories.name = :name
+                WHERE item_categories.name = :category
         ');
-        $name = $item->getName();
-        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $category = $item->getCategory();
+        $stmt->bindParam(':category', $category, PDO::PARAM_STR);
         $stmt->execute();
-        return $stmt;
+        $category = $stmt->fetch(PDO::FETCH_ASSOC);
+        $categoryId = $category['id_item_category'];
+        return $categoryId;
     }
 }

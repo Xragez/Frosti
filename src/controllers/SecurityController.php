@@ -24,13 +24,14 @@ class SecurityController extends AppController
         $password = $_POST["password"];
         $user = $this->userRepository->getUser($email);
         //TODO ADD try catch in case of exception from getUser
-        if(!$user || $user->getEmail() !== $email || $user->getPassword() !== md5($password)){
+        if(!$user || $user->getEmail() !== $email ||
+            password_verify($password, $user->getPassword())){
             return $this->render('login', ['messages' => ['Wrong email or password.']]);
         }
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['userId'] = $user->getUserId();
-        return $this->render('inventory');
-
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/inventory");
     }
     public function register(){
         if(!$this->isPost()){
@@ -45,11 +46,16 @@ class SecurityController extends AppController
         if($password != $confirmedPassword){
             return $this->render('register', ['messages' => ['Passwords are not the same']]);
         }
-        $user = New User($email, md5($password), $name, $surname);
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $user = New User($email, $password, $name, $surname);
         $user->setUsername($username);
         $user->setRoleId(2);
 
         $this->userRepository->addUser($user);
         return $this->render('registered_successfully');
+    }
+    public function logout(){
+        return $this->render('logout');
+
     }
 }
