@@ -74,7 +74,7 @@ session_start();
                 <div class="dropdown">
                     <span class="account">
                         <?php
-                        echo $user->getUsername();
+                        echo $_SESSION['username'];
                         ?>
                     </span>
                     <div class="dropdown-content">

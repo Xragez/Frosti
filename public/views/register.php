@@ -9,14 +9,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="modal registered-successfully" style="display: none">
-            <div class="modal-content">
-                <h2>Your account has been registered successfully!</h2>
-
-                <button>Go to Log in page</button>
-                </form>
-            </div>
-        </div>
         <div class="register-container">
             <h2>Sign up for free</h2>
             <form class="register" action="register" method="POST">

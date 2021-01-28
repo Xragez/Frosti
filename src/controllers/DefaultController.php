@@ -17,4 +17,7 @@ class DefaultController extends AppController{
         $this->render('recipes');
     }
 
+    public function registeredSuccessfully(){
+        $this->render('registered_successfully');
+    }
 }

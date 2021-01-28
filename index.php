@@ -16,4 +16,5 @@ Routing::get('accountDetails', 'DefaultController');
 Routing::get('recipes', 'DefaultController');
 Routing::get('logout', 'SecurityController');
 Routing::post('addRecipe', 'RecipeController');
+Routing::get('registeredSuccessfully', 'DefaultController');
 Routing::run($path);

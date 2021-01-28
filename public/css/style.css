@@ -269,6 +269,30 @@ nav ul li a:hover{
     align-items: flex-end;
 
 }
+select {
+    display: inline-block;
+    cursor: pointer;
+    outline: 0;
+    background-color: #DCDCDC;
+    color: #000000;
+    border: none;
+    width: 95%;
+    height: 3em;
+    border-radius: 0.7em;
+    margin: 1em;
+    padding: 0 1em;
+}
+select::-ms-expand {
+    display: none;
+}
+ select:hover,
+select:focus {
+    color: #000000;
+}
+select:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
 main{
     display: flex;
     flex-direction: column;
@@ -295,8 +319,23 @@ nav > img{
     width: 100%;
 }
 .inventory_table td, .inventory_table th{
-    border: none;
-    padding: 0.5em;
+    color: #999;
+    border: 1px solid #eee;
+    padding: 12px 35px;
+    border-collapse: collapse;
+
+}
+.inventory_table tr:hover {
+    background: #f4f4f4;
+}
+.inventory_table td:hover{
+    color: #555;
+}
+.inventory_table th{
+    background: #1a6bac;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
 
 }
 .no-valid{
@@ -320,5 +359,11 @@ nav > img{
     }
     .error-msg{
         width: 100%;
+    }
+    nav{
+        display: none;
+    }
+    main{
+        margin-left: 0;
     }
 }
