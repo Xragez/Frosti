@@ -7,6 +7,7 @@ class Item
     private $quantity;
     private $category;
     private $expDate;
+    private $id;
 
     public function __construct($name, $quantity, $category, $expDate)
     {
@@ -56,4 +57,13 @@ class Item
         $this->expDate = $expDate;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 }

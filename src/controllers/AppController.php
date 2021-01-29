@@ -32,5 +32,8 @@ class AppController{
 
         print $output;
     }
+    public function isUserLoggedIn(): bool{
+        return isset($_SESSION['userId']);
+    }
 
 }

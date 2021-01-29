@@ -1,0 +1,35 @@
+.inventory{
+    padding: 1em;
+}
+
+.inventory_table{
+    border-collapse: collapse;
+    width: 100%;
+
+
+}
+.inventory_table tbody{
+    height: 20em;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.inventory_table td, .inventory_table th{
+    color: #999;
+    border: 1px solid #eee;
+    padding: 12px 35px;
+    border-collapse: collapse;
+
+}
+.inventory_table tr:hover {
+    background: #f4f4f4;
+}
+.inventory_table td:hover{
+    color: #555;
+}
+.inventory_table th{
+    background: #1a6bac;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+
+}

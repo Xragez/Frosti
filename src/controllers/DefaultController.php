@@ -10,11 +10,24 @@ class DefaultController extends AppController{
 
 
     public function  accountDetails(){
-        $this->render('account_details');
+        if($this->isUserLoggedIn()){
+            $this->render('account_details');
+        }
+        else{
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
     }
 
     public function recipes(){
-        $this->render('recipes');
+
+        if($this->isUserLoggedIn()){
+            $this->render('recipes');
+        }
+        else{
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
     }
 
     public function registeredSuccessfully(){

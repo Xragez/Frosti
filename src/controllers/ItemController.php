@@ -13,12 +13,20 @@ class ItemController extends AppController {
     }
 
     public function inventory(){
+        if(!$this->isUserLoggedIn()){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
         $items = $this->itemRepository->getItems();
         $categories = $this->itemRepository->getCategories();
         $this->render('inventory', ['items' => $items, 'categories' => $categories]);
     }
 
     public function addItem(){
+        if(!$this->isUserLoggedIn()){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
         if(!$this->isPost()){
             return $this->render('inventory');
         }
@@ -28,7 +36,20 @@ class ItemController extends AppController {
         $expDate = $_POST['expDate'];
         $item = new Item($name, $quantity, $category, $expDate);
         $this->itemRepository->addItem($item);
-        $this->render('inventory', ['messages' => ['Product added']]);
+        $this->inventory();
     }
-
+    public function removeItem(){
+        if(!$this->isUserLoggedIn()){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
+        if(!$this->isPost()){
+            return $this->render('inventory');
+        }
+        foreach ($_POST as $key=>$value){
+            $this->itemRepository->removeItem((int)$key);
+        }
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/inventory");
+    }
 }

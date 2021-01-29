@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 </head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/register.css">
     <title>Register</title>
     <script type="text/javascript" src="./public/js/register_validation.js" defer></script>
 </head>

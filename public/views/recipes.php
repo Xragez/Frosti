@@ -5,7 +5,7 @@ session_start();
 </head>
 <link rel="stylesheet" type="text/css" href="public/css/style.css">
 <script src="https://kit.fontawesome.com/8d0c9bc700.js" crossorigin="anonymous"></script>
-<script src="public/js/script.js"></script>
+<script src="public/js/inventory.js"></script>
 <title>My food</title>
 </head>
 <body>

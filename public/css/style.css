@@ -33,44 +33,7 @@ h1, h2{
     margin: 0.5em;
     color: #2699fb;
 }
-.login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 23em;
-    height: 40em;
-    background: #FFFFFF 0 0 no-repeat padding-box;
-    box-shadow: 0 6px 6px #00000029;
-    border-radius: 2em;
-}
-.register-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 23em;
-    height: 44em;
-    background: #FFFFFF 0 0 no-repeat padding-box;
-    box-shadow: 0 6px 6px #00000029;
-    border-radius: 2em;
-}
-form.register{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    align-items: center;
-    margin-top: 1em;
-}
-form.login{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    height: 40vh;
-    
-}
+
 
 button{
     width: 50%;
@@ -106,10 +69,6 @@ input:focus{
 }
 .details{
     margin: 1em;
-}
-.login-footer a{
-    color: #2699FB;
-    text-decoration: underline;
 }
 .logo{
     display: flex;
@@ -166,34 +125,8 @@ img{
 }
 .search-bar{
     width: 60%;
+}
 
-}
-.side_menu{
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    box-sizing: border-box;
-    font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
-}
-nav{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: fixed;
-    width: 18em;
-    height: 100%;
-    left: 0;
-    background: #2699FB;
-}
-nav ul{
-    background: #2699FB;
-    width: 100%;
-    list-style: none;
-}
-nav ul ul{
-    display: none;
-
-}
 .show{
     display: block;
     background: #1a6bac;
@@ -201,31 +134,7 @@ nav ul ul{
 .show-flex{
     display: flex;
 }
-nav ul li{
-    line-height: 3.75em;
-    border-bottom: 1px solid rgba(179, 229, 252, 0.85);
-}
-nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding-left: 2.5em;
-    display: block;
-    font-weight: 500;
-    border-left: 0.3em solid transparent;
-}
-nav ul li a i{
-    font-size: 22px;
-    position: absolute;
-    right: 1em;
-    margin: 1em 0;
-    transition: transform 0.4s;
-}
-nav ul li a:hover{
-    color: #2699fb;
-    background-color: rgba(179, 229, 252, 0.9);
-    border-left-color: white;
-}
+
 .base-container{
     display: flex;
 
@@ -269,6 +178,18 @@ nav ul li a:hover{
     align-items: flex-end;
 
 }
+.remove-item .modal-content{
+    width: 50em;
+}
+.remove-item .modal-content thead{
+    display: block;
+}
+.remove-item .modal-content tbody{
+    height: 20em;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 select {
     display: inline-block;
     cursor: pointer;
@@ -310,34 +231,7 @@ nav > img{
     width: 80%;
     margin: 3em auto;
 }
-.inventory{
-    padding: 1em;
-}
 
-.inventory_table{
-    border-collapse: collapse;
-    width: 100%;
-}
-.inventory_table td, .inventory_table th{
-    color: #999;
-    border: 1px solid #eee;
-    padding: 12px 35px;
-    border-collapse: collapse;
-
-}
-.inventory_table tr:hover {
-    background: #f4f4f4;
-}
-.inventory_table td:hover{
-    color: #555;
-}
-.inventory_table th{
-    background: #1a6bac;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 12px;
-
-}
 .no-valid{
     background-color: #ffa2a7;
     box-shadow: 0 0 0.2em red;

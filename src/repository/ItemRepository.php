@@ -52,7 +52,7 @@ class ItemRepository extends Repository
     public function getItems(): array{
         $result = [];
         $stmt = $this->database->connect()->prepare('
-            SELECT quantity, expiration_date as expDate, public.items.name as name, public.item_categories.name as category
+            SELECT quantity, expiration_date as expDate, public.items.name as name, public.item_categories.name as category, items.id_item as id_item
             FROM items
             LEFT JOIN item_categories ON id_category = item_categories.id_item_category
             LEFT JOIN users_items on items.id_item = users_items.id_item
@@ -65,12 +65,14 @@ class ItemRepository extends Repository
 
         foreach ($items as $item){
             $date = $item['expdate'];
-            $result[] = new Item(
+            $temp = new Item(
                 $item['name'],
                 $item['quantity'],
                 $item['category'],
                 $date
             );
+            $temp->setId($item['id_item']);
+            $result[] = $temp;
         }
         return $result;
     }
@@ -97,5 +99,24 @@ class ItemRepository extends Repository
         $category = $stmt->fetch(PDO::FETCH_ASSOC);
         $categoryId = $category['id_item_category'];
         return $categoryId;
+    }
+    public function removeItem(int $id){
+        $conn = $this->database->connect();
+        $stmt = $conn->prepare('
+            DELETE FROM public.users_items WHERE id_user = :id_user
+            AND id_item = :id_item
+        ');
+        $conn->beginTransaction();
+        $id_user = $_SESSION['userId'];
+        $id_item = $id;
+        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $stmt->bindParam(':id_item', $id_item, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt = $conn->prepare('
+            DELETE FROM public.items WHERE id_item = :id_item
+        ');
+        $stmt->bindParam(':id_item', $id_item, PDO::PARAM_INT);
+        $stmt->execute();
+        $conn->commit();
     }
 }

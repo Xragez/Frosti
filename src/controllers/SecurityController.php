@@ -16,6 +16,10 @@ class SecurityController extends AppController
 
     public function login()
     {
+        if($this->isUserLoggedIn()){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/inventory");
+        }
         if(!$this->isPost()){
             return $this->render('login');
         }
@@ -24,12 +28,15 @@ class SecurityController extends AppController
         $password = $_POST["password"];
         $user = $this->userRepository->getUser($email);
         //TODO ADD try catch in case of exception from getUser
-        if(!$user || $user->getEmail() !== $email ||
-            password_verify($password, $user->getPassword())){
+        if(!$user || $user->getEmail() !== $email || !password_verify($password, $user->getPassword())){
             return $this->render('login', ['messages' => ['Wrong email or password.']]);
         }
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['userId'] = $user->getUserId();
+        $_SESSION['name'] = $user->getName();
+        $_SESSION['surname'] = $user->getSurname();
+        $_SESSION['email'] = $user->getEmail();
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/inventory");
     }

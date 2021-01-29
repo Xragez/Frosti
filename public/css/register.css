@@ -1,0 +1,18 @@
+.register-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 23em;
+    height: 44em;
+    background: #FFFFFF 0 0 no-repeat padding-box;
+    box-shadow: 0 6px 6px #00000029;
+    border-radius: 2em;
+}
+form.register{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    margin-top: 1em;
+}

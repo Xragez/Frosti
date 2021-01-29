@@ -1,0 +1,51 @@
+.side_menu{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    width: 18em;
+    height: 100%;
+    left: 0;
+    background: #2699FB;
+}
+nav ul{
+    background: #2699FB;
+    width: 100%;
+    list-style: none;
+}
+nav ul ul{
+    display: none;
+
+}
+nav ul li{
+    line-height: 3.75em;
+    border-bottom: 1px solid rgba(179, 229, 252, 0.85);
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding-left: 2.5em;
+    display: block;
+    font-weight: 500;
+    border-left: 0.3em solid transparent;
+}
+nav ul li a i{
+    font-size: 22px;
+    position: absolute;
+    right: 1em;
+    margin: 1em 0;
+    transition: transform 0.4s;
+}
+nav ul li a:hover{
+    color: #2699fb;
+    background-color: rgba(179, 229, 252, 0.9);
+    border-left-color: white;
+}
