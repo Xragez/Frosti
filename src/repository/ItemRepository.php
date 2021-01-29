@@ -119,4 +119,22 @@ class ItemRepository extends Repository
         $stmt->execute();
         $conn->commit();
     }
+    public function getItemByName(string $searchString){
+        $searchString = '%'.strtolower($searchString).'%';
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT quantity, expiration_date as expDate, public.items.name as name, public.item_categories.name as category, items.id_item as id_item
+            FROM items
+            LEFT JOIN item_categories ON id_category = item_categories.id_item_category
+            LEFT JOIN users_items on items.id_item = users_items.id_item
+            WHERE users_items.id_user = :id AND LOWER(public.items.name) LIKE :search
+        ');
+        $userId = $_SESSION['userId'];
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+        $return = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //$return['expDate'] =
+        return $return;
+    }
 }

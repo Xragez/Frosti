@@ -8,6 +8,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="public/css/inventory.css">
     <script src="https://kit.fontawesome.com/8d0c9bc700.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/inventory.js" defer></script>
+    <script type="text/javascript" src="./public/js/search_items.js" defer></script>
     <title>My food</title>
 </head>
 <body>
@@ -72,9 +73,7 @@ session_start();
             <header>
                 <h1>My food</h1>
                 <div class="search-bar">
-                    <form>
-                        <input placeholder="search">
-                    </form>
+                    <input placeholder="search">
                 </div>
                 <?php include('account_dropdown.php')?>
             </header>
@@ -89,7 +88,7 @@ session_start();
                             <th>Date</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="item-container">
                         <?php foreach ($items as $item): ?>
                         <tr>
                             <td><?= $item->getName(); ?></td>
@@ -105,3 +104,12 @@ session_start();
 
     </div>
 </body>
+
+<template id="item-template">
+    <tr>
+        <td id="name">Name</td>
+        <td id="quantity">Quantity</td>
+        <td id="category">Category</td>
+        <td id="exp_date">ExpDate</td>
+    </tr>
+</template>

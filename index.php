@@ -18,4 +18,5 @@ Routing::get('logout', 'SecurityController');
 Routing::post('addRecipe', 'RecipeController');
 Routing::get('registeredSuccessfully', 'DefaultController');
 Routing::post('removeItem', 'ItemController');
+Routing::post('search', 'ItemController');
 Routing::run($path);
